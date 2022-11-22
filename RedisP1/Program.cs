@@ -1,3 +1,6 @@
+using RedisP1.Contracts.v1;
+using RedisP1.Utils.v1;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -6,6 +9,8 @@ builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+
+builder.Services.RegisterAllTypes<IStrategy>(new[] { typeof(Program).Assembly });
 
 var app = builder.Build();
 
