@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using RedisP1.Contracts.v1;
 
-namespace RedisP1.Database.v1
+namespace RedisP1.Database.Data.v1
 {
     public class Database : IDatabase
     {
