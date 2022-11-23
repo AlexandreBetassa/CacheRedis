@@ -1,52 +1,29 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using RedisP1.Contracts.v1;
-using RedisP1.Models.v1;
+﻿using RedisP1.Contracts.v1;
+using RedisP1.Services.Contracts.v1;
 
 namespace RedisP1.Services.v1
 {
-    public class CreditCardService : IStrategy, IRepository<CreditCard>
+    public class CreditCardService : IService 
     {
-        private readonly IRepository<CreditCard> _repository;
+        private readonly IRepository _repository;
 
-        public CreditCardService(IRepository<CreditCard> repository)
+        public CreditCardService(IRepository repository)
         {
             _repository = repository;
         }
-
-        public Task<ActionResult<CreditCard>> CreateAsync(CreditCard entity)
+        public Task CreateAsync(IEntity entity)
         {
-            try
-            {
-                return _repository.CreateAsync(entity);
-            }
-            catch
-            {
-                throw new Exception();
-            }
+            return _repository.CreateAsync(entity);
         }
 
-        public Task<ActionResult<List<CreditCard>>> GetAllAsync()
+        public Task GetAllAsync()
         {
-            try
-            {
-                return _repository.GetAllAsync();
-            }
-            catch
-            {
-                throw new Exception();
-            }
+            return _repository.GetAllAsync();
         }
 
-        public Task<ActionResult<CreditCard>> GetAsync(string id)
+        public Task GetAsync(string id)
         {
-            try
-            {
-                return _repository.GetAsync(id);
-            }
-            catch
-            {
-                throw new Exception();
-            }
+            return _repository.GetAsync(id);
         }
     }
 }

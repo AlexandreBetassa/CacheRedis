@@ -1,52 +1,30 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using RedisP1.Contracts.v1;
-using RedisP1.Models.v1;
+﻿using RedisP1.Contracts.v1;
+using RedisP1.Services.Contracts.v1;
 
 namespace RedisP1.Services.v1
 {
-    public class WithdrawService : IStrategy, IRepository<Withdraw>
+    public class DebitCardService : IService
     {
-        private readonly IRepository<Withdraw> _repository;
+        private readonly IRepository _repository;
 
-        public WithdrawService(IRepository<Withdraw> repository)
+        public DebitCardService(IRepository repository)
         {
             _repository = repository;
         }
 
-        public Task<ActionResult<Withdraw>> CreateAsync(Withdraw entity)
+        public Task CreateAsync(IEntity entity)
         {
-            try
-            {
-                return _repository.CreateAsync(entity);
-            }
-            catch
-            {
-                throw new Exception();
-            }
+            return _repository.CreateAsync(entity);
         }
 
-        public Task<ActionResult<List<Withdraw>>> GetAllAsync()
+        public Task GetAllAsync()
         {
-            try
-            {
-                return _repository.GetAllAsync();
-            }
-            catch
-            {
-                throw new Exception();
-            }
+            return _repository.GetAllAsync();
         }
 
-        public Task<ActionResult<Withdraw>> GetAsync(string id)
+        public Task GetAsync(string id)
         {
-            try
-            {
-                return _repository.GetAsync(id);
-            }
-            catch
-            {
-                throw new Exception();
-            }
+            return _repository.GetAsync(id);
         }
     }
 }

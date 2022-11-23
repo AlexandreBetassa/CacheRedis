@@ -1,52 +1,29 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using RedisP1.Contracts.v1;
-using RedisP1.Models.v1;
+﻿using RedisP1.Contracts.v1;
 
 namespace RedisP1.Services.v1
 {
-    public class PixService : IStrategy, IRepository<Pix>
+    public class WithdrawService
     {
-        private readonly IRepository<Pix> _repository;
+        private readonly IRepository _repository;
 
-        public PixService(IRepository<Pix> repository)
+        public WithdrawService(IRepository repository)
         {
             _repository = repository;
         }
 
-        public Task<ActionResult<Pix>> CreateAsync(Pix entity)
+        public Task CreateAsync(IEntity entity)
         {
-            try
-            {
-                return _repository.CreateAsync(entity);
-            }
-            catch
-            {
-                throw new Exception();
-            }
+            return _repository.CreateAsync(entity);
         }
 
-        public Task<ActionResult<List<Pix>>> GetAllAsync()
+        public Task GetAllAsync(IEntity entity)
         {
-            try
-            {
-                return _repository.GetAllAsync();
-            }
-            catch
-            {
-                throw new Exception();
-            }
+            return _repository.GetAllAsync();
         }
 
-        public Task<ActionResult<Pix>> GetAsync(string id)
+        public Task GetAsync(string id)
         {
-            try
-            {
-                return _repository.GetAsync(id);
-            }
-            catch
-            {
-                throw new Exception();
-            }
+            return _repository.GetAsync(id);
         }
     }
 }
