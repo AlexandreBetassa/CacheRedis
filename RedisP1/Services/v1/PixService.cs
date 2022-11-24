@@ -1,4 +1,5 @@
-﻿using RedisP1.Contracts.v1;
+﻿using Microsoft.AspNetCore.Mvc;
+using RedisP1.Contracts.v1;
 using RedisP1.Models.v1;
 using RedisP1.Services.Contracts.v1;
 
@@ -13,19 +14,19 @@ namespace RedisP1.Services.v1
             _repository = repository;
         }
 
-        public Task Create(Pix entity)
+        public async Task<ActionResult<Pix>> Create(Pix entity)
         {
-            return _repository.CreateAsync(entity);
+            return await _repository.CreateAsync(entity);
         }
 
-        public Task Get(string id)
+        public async Task<ActionResult<Pix>> Get(string id)
         {
-            return _repository.GetAsync(id);
+            return await _repository.GetAsync(id);
         }
 
-        public Task GetAll()
+        public async Task<ActionResult<List<Pix>>> GetAll()
         {
-            return _repository.GetAllAsync();
+            return await _repository.GetAllAsync();
         }
     }
 }

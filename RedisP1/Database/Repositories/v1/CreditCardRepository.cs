@@ -12,20 +12,20 @@ namespace RedisP1.Database.Repositories.v1
             _data = data;
         }
 
-        public Task<CreditCard> CreateAsync(CreditCard entity)
+        public async Task<CreditCard> CreateAsync(CreditCard entity)
         {
-            return _data.CreateAsync(entity);
+            return await _data.CreateAsync(entity);
 
         }
 
-        public Task<List<CreditCard>> GetAllAsync()
+        public async Task<List<CreditCard>> GetAllAsync()
         {
-            return _data.GetAllAsync();
+            return await _data.GetAllAsync();
         }
 
-        public Task<CreditCard> GetAsync(string id)
+        public async Task<CreditCard> GetAsync(string id)
         {
-            return _data.GetAsync(id);
+            return await _data.GetAsync(id);
         }
     }
 }

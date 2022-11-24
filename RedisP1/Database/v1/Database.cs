@@ -16,7 +16,7 @@ namespace RedisP1.Database.v1
         {
             await _db.Set<T>().AddAsync(entity);
             await _db.SaveChangesAsync();
-            return entity;
+            return await Task.FromResult(entity);
         }
 
         public async Task<List<T>> GetAllAsync()

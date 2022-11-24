@@ -1,4 +1,5 @@
-﻿using RedisP1.Contracts.v1;
+﻿using Microsoft.AspNetCore.Mvc;
+using RedisP1.Contracts.v1;
 using RedisP1.Models.v1;
 using RedisP1.Services.Contracts.v1;
 
@@ -13,19 +14,20 @@ namespace RedisP1.Services.v1
             _repository = repository;
         }
 
-        public Task Create(CreditCard creditCard)
+        public async Task<ActionResult<CreditCard>> Create(CreditCard creditCard)
         {
-            return _repository.CreateAsync(creditCard);
+            return await _repository.CreateAsync(creditCard);
+
         }
 
-        public Task Get(string id)
+        public async Task<ActionResult<CreditCard>> Get(string id)
         {
-            return _repository.GetAsync(id);
+            return await _repository.GetAsync(id);
         }
 
-        public Task GetAll()
+        public async Task<ActionResult<List<CreditCard>>> GetAll()
         {
-            return _repository.GetAllAsync();
+            return await _repository.GetAllAsync();
         }
     }
 }
