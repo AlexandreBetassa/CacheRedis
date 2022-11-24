@@ -7,11 +7,11 @@ namespace RedisP1.Controllers.v1
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class ProductsController : ControllerBase
+    public class ProductsController : ControllerBase 
     {
-        private readonly IEnumerable<IService<IEntity>> _service;
+        private readonly IService<CreditCard> _service;
 
-        public ProductsController(IEnumerable<IService<IEntity>> service)
+        public ProductsController(IService<CreditCard> service)
         {
             _service = service;
         }
@@ -19,7 +19,7 @@ namespace RedisP1.Controllers.v1
         [HttpPost]
         public Task Create(String type, CreditCard entity)
         {
-            return _service.Where(service => service.GetType().Name.Contains(type)).First().Create(entity);
+            return _service.Create(entity);
         }
 
         //[HttpGet]
