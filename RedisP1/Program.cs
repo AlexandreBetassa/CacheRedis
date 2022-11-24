@@ -26,6 +26,12 @@ builder.Services.AddScoped<IRepository<DebitCard>, DebitCardRepository>();
 builder.Services.AddScoped<IRepository<CreditCard>, CreditCardRepository>();
 builder.Services.AddScoped<IRepository<Pix>, PixRepository>();
 
+builder.Services.AddStackExchangeRedisCache(opt =>
+{
+    opt.InstanceName = "redis";
+    opt.Configuration = "localhost: 6379";
+});
+
 builder.Services.AddDbContext<AppDbContext>(opt => opt.UseSqlServer(builder.Configuration["ConnectionString:DefaultConnection"]));
 
 var app = builder.Build();
