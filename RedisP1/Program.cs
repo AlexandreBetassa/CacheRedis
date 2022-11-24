@@ -6,6 +6,7 @@ using RedisP1.Models.v1;
 using RedisP1.Services.Contracts.v1;
 using RedisP1.Services.v1;
 using RedisP1.Utils.v1;
+using StackExchange.Redis;
 
 var builder = WebApplication.CreateBuilder(args);
 
