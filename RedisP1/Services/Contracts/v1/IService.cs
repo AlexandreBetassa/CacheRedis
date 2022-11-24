@@ -1,11 +1,11 @@
-﻿using RedisP1.Contracts.v1;
+﻿using RedisP1.Models.v1;
 
 namespace RedisP1.Services.Contracts.v1
 {
-    public interface IService
+    public interface IService<T> where T : class
     {
-        Task CreateAsync(IEntity entity);
-        Task GetAsync(string id);
-        Task GetAllAsync();
+        Task Create(T creditCard);
+        Task Get(String id);
+        Task GetAll();
     }
 }

@@ -2,10 +2,10 @@
 
 namespace RedisP1.Contracts.v1
 {
-    public interface IDatabase
+    public interface IDatabase<T> where T : class
     {
-        Task CreateAsync(IEntity entity);
-        Task<ActionResult<List<IEntity>>> GetAllAsync();
-        Task<ActionResult<IEntity>> GetAsync(string id);
+        Task<T> CreateAsync(T entity);
+        Task<List<T>> GetAllAsync();
+        Task<T> GetAsync(string id);
     }
 }

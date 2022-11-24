@@ -5,7 +5,7 @@ namespace RedisP1.Utils.v1
     public static class ServiceCollectionExtensions
     {
         public static void RegisterAllTypes<T>(this IServiceCollection services, Assembly[] assemblies,
-            ServiceLifetime lifetime = ServiceLifetime.Transient)
+            ServiceLifetime lifetime = ServiceLifetime.Scoped)
         {
             var typesFromAssemblies = assemblies.SelectMany(a => a.DefinedTypes
             .Where(x => x.GetInterfaces().Contains(typeof(T))));

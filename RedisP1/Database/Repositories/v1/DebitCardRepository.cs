@@ -1,27 +1,27 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using RedisP1.Contracts.v1;
+﻿using RedisP1.Contracts.v1;
+using RedisP1.Models.v1;
 
 namespace RedisP1.Database.Repositories.v1
 {
-    public class DebitCardRepository : IRepository
+    public class DebitCardRepository : IRepository<DebitCard>
     {
-        private readonly IDatabase _data;
-        public DebitCardRepository(IDatabase data)
+        private readonly IDatabase<DebitCard> _data;
+        public DebitCardRepository(IDatabase<DebitCard> data)
         {
             _data = data;
         }
-       
-        public Task CreateAsync(IEntity entity)
+
+        public Task<DebitCard> CreateAsync(DebitCard entity)
         {
             return _data.CreateAsync(entity);
         }
 
-        public Task<ActionResult<List<IEntity>>> GetAllAsync()
+        public Task<List<DebitCard>> GetAllAsync()
         {
             return _data.GetAllAsync();
         }
 
-        public Task<ActionResult<IEntity>> GetAsync(string id)
+        public Task<DebitCard> GetAsync(string id)
         {
             return _data.GetAsync(id);
         }

@@ -1,7 +1,6 @@
+using Microsoft.EntityFrameworkCore;
 using RedisP1.Contracts.v1;
-using RedisP1.Database.Data.v1;
-using RedisP1.Services.Contracts.v1;
-using RedisP1.Utils.v1;
+using RedisP1.Database.v1;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -12,10 +11,11 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-builder.Services.AddScoped<IDatabase, Database>();
+builder.Services.AddScoped<IDatabase<IEntity>, Database<IEntity>>();
 
-builder.Services.RegisterAllTypes<IService>(new[] { typeof(Program).Assembly });
-builder.Services.RegisterAllTypes<IRepository>(new[] { typeof(Program).Assembly });
+
+
+builder.Services.AddDbContext<AppDbContext>(opt => opt.UseSqlServer(builder.Configuration["ConnectionString:DefaultConnection"]));
 
 var app = builder.Build();
 
