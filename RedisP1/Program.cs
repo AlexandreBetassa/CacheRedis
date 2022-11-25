@@ -1,8 +1,8 @@
 using Microsoft.EntityFrameworkCore;
 using RedisP1.Contracts.v1;
-using RedisP1.Database.Repositories.v1;
 using RedisP1.Database.v1;
 using RedisP1.Models.v1;
+using RedisP1.Repositories.v1;
 using RedisP1.Services.Contracts.v1;
 using RedisP1.Services.v1;
 using RedisP1.Utils.v1;

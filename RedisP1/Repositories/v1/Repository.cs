@@ -1,6 +1,6 @@
 ﻿using RedisP1.Contracts.v1;
 
-namespace RedisP1.Database.Repositories.v1
+namespace RedisP1.Repositories.v1
 {
     public class Repository<T> : IRepository<T> where T : class
     {
