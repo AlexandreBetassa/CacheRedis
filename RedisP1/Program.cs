@@ -18,14 +18,8 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 builder.Services.AddScoped(typeof(IDatabase<>), typeof(Database<>));
-builder.Services.AddScoped<IService<Pix>, PixService>();
-builder.Services.AddScoped<IService<CreditCard>, CreditCardService>();
-builder.Services.AddScoped<IService<DebitCard>, DebitCardService>();
-
-
-builder.Services.AddScoped<IRepository<DebitCard>, DebitCardRepository>();
-builder.Services.AddScoped<IRepository<CreditCard>, CreditCardRepository>();
-builder.Services.AddScoped<IRepository<Pix>, PixRepository>();
+builder.Services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
+builder.Services.AddScoped(typeof(IService<>), typeof(Service<>));
 
 builder.Services.AddStackExchangeRedisCache(opt =>
 {
